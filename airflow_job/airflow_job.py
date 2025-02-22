@@ -65,18 +65,18 @@ with DAG(
         },
         "runtime_config": {
             "version": "2.2",  # Specify Dataproc version (if needed)
-            "properties": {
-        "dataproc:dataproc.worker.memory-mb": "2048",  # Reduce worker memory
-        "dataproc:dataproc.worker.vcpu": "0.5",  # Reduce vCPU per worker
-    }
+           "properties": {
+            "spark.executor.cores": "1",      # Lower cores per executor
+            "spark.executor.memory": "1g",      # Lower memory per executor
+            "spark.driver.memory": "1g",        # Lower driver memory
+        }
         },
         "environment_config": {
             "execution_config": {
                 "service_account": "498495323363-compute@developer.gserviceaccount.com",
                 "network_uri": "projects/dev-inscriber-449609-d7/global/networks/default",
                 "subnetwork_uri": "projects/dev-inscriber-449609-d7/regions/us-central1/subnetworks/default",
-                "min_instances": 1,  # Reduce minimum workers
-                "max_instances": 1,  # Reduce maximum workers
+                
             }
         },
     }
